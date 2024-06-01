@@ -7,8 +7,8 @@ import { Navigation, Pagination } from 'swiper/modules';
 import SwiperCore from 'swiper';
 import UserCard from "../components/ui/User/Card.jsx";
 import ProjectCard from "../components/ui/Project/Card.jsx";
-
 import { motion, AnimatePresence } from 'framer-motion';
+
 // Install Swiper modules
 SwiperCore.use([Navigation, Pagination]);
 const profiles = [

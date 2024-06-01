@@ -6,6 +6,8 @@ import 'swiper/css/pagination';
 import { Navigation } from 'swiper/modules';
 import SwiperCore from 'swiper'; 
 import UserCard from "../components/ui/User/Card.jsx";
+import Spline from '@splinetool/react-spline';
+
 
 SwiperCore.use([Navigation]);
 
@@ -301,11 +303,16 @@ const project = {
 
 const ProjectComponent = () => {
   const [filter, setFilter] = useState("");
-
+  
   return (
     <div className="bg-gray-900 text-white p-6 rounded-lg shadow-lg max-w-4xl mx-auto mb-44">
       <div className="flex flex-col md:flex-row justify-between">
         <div className="md:w-2/3">
+        <div className="rounded-lg overflow-hidden">
+        <Spline
+              scene="https://prod.spline.design/GklWSSgGgsjJ9Pqz/scene.splinecode"
+            />
+        </div>
           <div className="bg-gray-800 p-4 rounded-lg mb-4">
             <h2 className="text-xl font-semibold">{project.name}</h2>
             <p className="text-sm text-gray-400">{project.date}</p>
@@ -335,13 +342,7 @@ const ProjectComponent = () => {
               </button>
             </div>
           </div>
-          <div className="rounded-lg overflow-hidden">
-            <img
-              src="https://via.placeholder.com/600x300"
-              alt="Event"
-              className="w-full"
-            />
-          </div>
+
         </div>
         <div className="md:w-1/3 md:pl-4">
           <h3 className="text-lg font-semibold mb-4">Project members</h3>

@@ -7,6 +7,8 @@ import { Navigation } from 'swiper/modules';
 import SwiperCore from 'swiper'; 
 import UserCard from "../components/ui/User/Card.jsx";
 import Spline from '@splinetool/react-spline';
+import { useParams } from "react-router-dom";
+
 
 
 SwiperCore.use([Navigation]);
@@ -303,6 +305,7 @@ const project = {
 
 const ProjectComponent = () => {
   const [filter, setFilter] = useState("");
+  const {id} = useParams();
   
   return (
     <div className="bg-gray-900 text-white p-6 rounded-lg shadow-lg max-w-4xl mx-auto mb-44">
@@ -312,7 +315,7 @@ const ProjectComponent = () => {
             <Spline scene="https://prod.spline.design/GklWSSgGgsjJ9Pqz/scene.splinecode" />
         </div>
           <div className="bg-gray-800 p-4 rounded-lg mb-4">
-            <h2 className="text-xl font-semibold">{project.name}</h2>
+            <h2 className="text-xl font-semibold">{project.name}, {id}</h2>
             <p className="text-sm text-gray-400">{project.date}</p>
             <p className="mt-2">{project.description}</p>
             <div className="flex items-center mt-4 flex-wrap gap-2">

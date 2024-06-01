@@ -6,6 +6,7 @@ import UserProjects from "./pages/UserProjects.jsx";
 import ExploreProjects from "./pages/ExploreProjects.jsx";
 import Profile from "./pages/Profile.jsx";
 import SpecificProject from "./pages/SpecificProject.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 // import Projects from './pages/Projects';
 // import Profile from './pages/Profile';
 
@@ -17,9 +18,9 @@ function App() {
 					<Route path='/' element={<Home />} />
 					<Route path='/users-projects' element={<UserProjects />} />
 					<Route path='/explore-projects' element={<ExploreProjects />}/>
-					 {/*<Route path="/dashboard" element={<Projects />} /> */}
+					<Route path="/dashboard" element={<Dashboard />} />
 					<Route path='/profile' element={<Profile />} />
-					<Route path='/project' element={<SpecificProject />} />
+					<Route path='/project/:id' element={<SpecificProject />} />
 				</Routes>
 			</Layout>
 		</Router>

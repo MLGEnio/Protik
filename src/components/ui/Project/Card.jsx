@@ -1,15 +1,18 @@
-// src/components/User.jsx
 import React from 'react';
 
-const Card = ({ title, filter, setFilter }) => {
+const Card = ({ image, title, date, tag }) => {
     return (
-        <div className="relative flex flex-col items-center">
-            <button
-                className={`bg-gray-800 mr-2 text-white py-1 px-4 rounded-full hover:bg-gray-700 focus:bg-[#B573EE] ${filter === title ? 'bg-gray-700' : ''}`}
-                onClick={() => setFilter(title)}
-            >
-                {title}
-            </button>
+        <div className="relative max-w-xs rounded-lg overflow-hidden shadow-lg mx-3">
+            <img src={image} alt={title} className="w-[300px] h-[250px] object-cover" />
+            <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-between py-5 px-2 ">
+                <div className="flex flex-col">
+                    <h2 className="text-white text-xl font-bold">{title}</h2>
+                    <p className="text-gray-300">{date}</p>
+                </div>
+                <span className="inline-block bg-purple-600 w-fit text-white text-xs font-semibold mt-2 px-2 py-1 rounded-full">
+                    #{tag}
+                </span>
+            </div>
         </div>
     );
 };

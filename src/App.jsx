@@ -5,6 +5,7 @@ import Layout from "./components/ui/Layout.jsx";
 import UserProjects from "./pages/UserProjects.jsx";
 import ExploreProjects from "./pages/ExploreProjects.jsx";
 import Profile from "./pages/Profile.jsx";
+import SpecificProject from "./pages/SpecificProject.jsx";
 // import Projects from './pages/Projects';
 // import Profile from './pages/Profile';
 
@@ -21,6 +22,7 @@ function App() {
 					/>
 					{/* <Route path="/projects" element={<Projects />} /> */}
 					<Route path='/profile' element={<Profile />} />
+					<Route path='/project' element={<SpecificProject />} />
 				</Routes>
 			</Layout>
 		</Router>

@@ -48,3 +48,12 @@ html, body, #root {
 .mySwiper .swiper-pagination-bullet-active {
     background: #B573EE;
 }
+/* src/styles.css or your global CSS file */
+.truncate-three-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.5em; /* Approximately 3 lines of text */
+}

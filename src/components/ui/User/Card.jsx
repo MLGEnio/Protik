@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
-import {Avatar, Card, CardContent, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography} from '@mui/material';
-import {AnimatePresence, motion} from 'framer-motion';
+import React, { useState } from 'react';
+import { Avatar, Card, CardContent, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
+import { AnimatePresence, motion } from 'framer-motion';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import JavascriptIcon from '@mui/icons-material/Javascript';
+import DiamondIcon from '@mui/icons-material/Diamond';
 
-const UserCard = ({ title, filter, setFilter, profile }) => {
+const UserCard = ({ title, filter, setFilter, profile, backgroundColor }) => {
     const [isExpanded, setIsExpanded] = useState(false);
 
     const handleToggleExpand = () => {
@@ -13,64 +16,78 @@ const UserCard = ({ title, filter, setFilter, profile }) => {
     return (
         <Card
             sx={{
-                backgroundColor: filter === title ? 'rgba(55, 65, 81, 0.9)' : 'rgba(55, 65, 81, 0.8)',
+                backgroundColor: backgroundColor,
                 color: 'white',
+                borderRadius: "50px",
                 margin: 2,
                 cursor: 'pointer',
+                padding:"20px",
                 width: isExpanded ? '600px' : '300px',
+                minHeight: '300px',
                 transition: 'width 0.5s ease',
             }}
             onClick={handleToggleExpand}
         >
             <CardContent>
                 <Grid container spacing={2}>
-                    <Grid item xs={12} sm={isExpanded ? 3 : 12}>
+                    <Grid item xs={12} sm={isExpanded ? 5 : 12}>
                         <Avatar
                             src={profile.image}
                             alt={title}
-                            sx={{ width: 56, height: 56, margin: '0 auto' }}
+                            sx={{ width: 56, height: 56}}
                         />
-                        <Typography variant="h5" component="div" align="center" mt={2}>
+                        <Typography variant="h5" component="div" mt={2}>
                             {title}
                         </Typography>
-                        <Typography variant="body2" color="textSecondary" align="center" mt={1}>
-                            {profile.description}
-                        </Typography>
+                        {isExpanded
+                            ?
+                            <Typography variant="body2" mt={1} style={{ fontSize: '0.875rem' }}>
+                                {profile.fullDescription}
+                            </Typography>
+                            :
+                            <Typography variant="body1" className="truncate-three-lines" mt={2}>
+                                {profile.description}
+                            </Typography>
+                        }
+                        <div className="flex mt-4">
+                            <GitHubIcon fontSize="large" className="mr-2"/>
+                            <JavascriptIcon fontSize="large" className="mr-2"/>
+                            <DiamondIcon fontSize="large" className="mr-2"/>
+                        </div>
                     </Grid>
                     <AnimatePresence>
                         {isExpanded && (
-                            <Grid item xs={12} sm={9}>
+                            <Grid item xs={12} sm={7}>
                                 <motion.div
-                                    initial={{ opacity: 0, height: "250px" }}
-                                    animate={{ opacity: 1, height: '450px' }}
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: '350px' }}
                                     exit={{ opacity: 0, height: 0 }}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    <Typography variant="body2" mt={2}>
-                                        {profile.fullDescription}
-                                    </Typography>
                                     <List>
-                                        <Typography variant="h6" mt={2}>Experience</Typography>
+                                        <Typography variant="subtitle1" mt={0}>Experience</Typography>
                                         {profile.experience.map((exp, idx) => (
                                             <ListItem key={idx}>
                                                 <ListItemAvatar>
                                                     <Avatar src={exp.icon} />
                                                 </ListItemAvatar>
                                                 <ListItemText
-                                                    primary={exp.title}
-                                                    secondary={`${exp.location} (${exp.duration})`}
+                                                    primary={<Typography variant="body2" style={{ fontSize: '0.875rem' }}>{exp.title}</Typography>}
+                                                    secondary={<Typography variant="caption" color="textSecondary">{`${exp.location} (${exp.duration})`}</Typography>}
                                                 />
                                             </ListItem>
                                         ))}
                                     </List>
                                     <List>
-                                        <Typography variant="h6" mt={2}>Certificates</Typography>
+                                        <Typography variant="subtitle1" mt={0}>Certificates</Typography>
                                         {profile.certificates.map((cert, idx) => (
                                             <ListItem key={idx}>
                                                 <ListItemAvatar>
                                                     <Avatar src={cert.icon} />
                                                 </ListItemAvatar>
-                                                <ListItemText primary={cert.title} />
+                                                <ListItemText
+                                                    primary={<Typography variant="body2" style={{ fontSize: '0.875rem' }}>{cert.title}</Typography>}
+                                                />
                                             </ListItem>
                                         ))}
                                     </List>

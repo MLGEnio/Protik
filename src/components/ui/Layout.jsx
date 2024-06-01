@@ -1,5 +1,7 @@
 import React from 'react';
 import { World } from './globe.jsx';
+import Footer from "./Shared/Footer.jsx";
+import {useLocation} from "react-router-dom";
 
 const Layout = ({ children }) => {
     const globeConfig = {
@@ -387,18 +389,23 @@ const Layout = ({ children }) => {
             color: colors[Math.floor(Math.random() * (colors.length - 1))],
         },
     ];
+    const location = useLocation();
+    const currentPath = location.pathname;
 
 //ktu duhet heq overflow hidden bsj se sna lejo me bo scroll posht neper faqet e tjera, se e ke bo layout , affekto cdo vend
     return (
-        <div className="relative w-full h-full overflow-hidden">
+        <div className="relative  w-full h-full overflow-auto">
             {/*<div*/}
             {/*    className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-1"/>*/}
 
             <div className="absolute inset-0 w-full h-full bg-[#02000F] p-16 pt-44 z-0">
-                <World data={sampleArcs} globeConfig={globeConfig}/>
+                {currentPath === "/" && <World data={sampleArcs} globeConfig={globeConfig}/>}
             </div>
-            <div className="relative z-10">
-                {children}
+            <div className="relative z-10 max-h-screen overflow-y-auto min-h-full" >
+                <div className="h-full mx-4 md:mx-32">
+                    {children}
+                </div>
+                {currentPath !== "/" && <Footer/>}
             </div>
         </div>
     );

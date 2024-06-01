@@ -18,7 +18,7 @@
 }
 
 ::-webkit-scrollbar-track {
-    background: black; /* Change the track color */
+    background: #02000F; /* Change the track color */
 }
 /* styles.css or index.css */
 
@@ -28,3 +28,30 @@ html, body, #root {
     padding: 0;
 }
 
+
+.mySwiper {
+    width: 100%;
+}
+
+.mySwiper .swiper-slide {
+    background: #2D2B55;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mySwiper .swiper-slide img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.mySwiper .swiper-button-next,
+.mySwiper .swiper-button-prev {
+    color: #B573EE;
+}
+
+.mySwiper .swiper-pagination-bullet-active {
+    background: #B573EE;
+}

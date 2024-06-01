@@ -16,11 +16,8 @@ function App() {
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/users-projects' element={<UserProjects />} />
-					<Route
-						path='/explore-projects'
-						element={<ExploreProjects />}
-					/>
-					{/* <Route path="/projects" element={<Projects />} /> */}
+					<Route path='/explore-projects' element={<ExploreProjects />}/>
+					 {/*<Route path="/dashboard" element={<Projects />} /> */}
 					<Route path='/profile' element={<Profile />} />
 					<Route path='/project' element={<SpecificProject />} />
 				</Routes>

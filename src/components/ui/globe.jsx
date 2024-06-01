@@ -9,7 +9,8 @@ import countries from "../../data/global.json";
 extend({ ThreeGlobe });
 
 const RING_PROPAGATION_SPEED = 3;
-const aspect = 1.2;
+const aspect = window.innerWidth / window.innerHeight;
+console.log(window.innerWidth, "width")
 const cameraZ = 300;
 
 let numbersOfRings = [0];
@@ -78,9 +79,7 @@ export function Globe({ globeConfig, data }) {
         const filteredPoints = points.filter(
             (v, i, a) =>
                 a.findIndex((v2) =>
-                    ["lat", "lng"].every(
-                        (k) => v2[k] === v[k]
-                    )
+                    ["lat", "lng"].every((k) => v2[k] === v[k])
                 ) === i
         );
 

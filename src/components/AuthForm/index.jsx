@@ -159,7 +159,7 @@ const AuthForm = () => {
 							}`}
 							disabled={selectedCards.length < 5}
 						>
-							Proceed
+							{selectedCards.length}/5 Proceed
 						</button>
 					</div>
 				)}

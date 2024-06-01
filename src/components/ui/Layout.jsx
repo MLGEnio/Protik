@@ -395,9 +395,9 @@ const Layout = ({ children }) => {
 	return (
 		<div className='relative  w-full h-full overflow-auto'>
 			<div className='absolute inset-0 w-full h-full bg-[#02000F] p-16 pt-44 z-0'>
-				{currentPath === "/" && (
+				{/*{currentPath === "/" && (*/}
 					<World data={sampleArcs} globeConfig={globeConfig} />
-				)}
+				{/*)}*/}
 			</div>
 			<div className='relative z-10 max-h-screen overflow-y-auto min-h-full'>
 				<div className='h-full mx-4 md:mx-32'>{children}</div>

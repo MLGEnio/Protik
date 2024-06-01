@@ -388,7 +388,7 @@ const Layout = ({ children }) => {
         },
     ];
 
-
+//ktu duhet heq overflow hidden bsj se sna lejo me bo scroll posht neper faqet e tjera, se e ke bo layout , affekto cdo vend
     return (
         <div className="relative w-full h-full overflow-hidden">
             {/*<div*/}

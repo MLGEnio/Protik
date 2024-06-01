@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Preferences from "../Preferenes/index";
+import { useNavigate } from "react-router-dom";
 
 const AuthForm = () => {
 	const [isLogin, setIsLogin] = useState(true);
@@ -11,6 +12,7 @@ const AuthForm = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
+	const nav = useNavigate();
 
 	const onSubmit = (data) => {
 		if (isLogin) {
@@ -23,7 +25,7 @@ const AuthForm = () => {
 	};
 
 	const handleProceed = () => {
-		console.log("Preferences submitted");
+		nav("/explore-projects");
 		// Add API call for submitting preferences here
 	};
 

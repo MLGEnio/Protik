@@ -1,9 +1,6 @@
-// src/components/UserCard.jsx
-import React, { useState } from 'react';
-import { Card, CardContent, CardActions, Typography, Button, Avatar, Grid, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
-import { motion, AnimatePresence } from 'framer-motion';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import React, {useState} from 'react';
+import {Avatar, Card, CardContent, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography} from '@mui/material';
+import {AnimatePresence, motion} from 'framer-motion';
 
 const UserCard = ({ title, filter, setFilter, profile }) => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -20,7 +17,7 @@ const UserCard = ({ title, filter, setFilter, profile }) => {
                 color: 'white',
                 margin: 2,
                 cursor: 'pointer',
-                width: isExpanded ? '100%' : '300px',
+                width: isExpanded ? '600px' : '300px',
                 transition: 'width 0.5s ease',
             }}
             onClick={handleToggleExpand}
@@ -44,8 +41,8 @@ const UserCard = ({ title, filter, setFilter, profile }) => {
                         {isExpanded && (
                             <Grid item xs={12} sm={9}>
                                 <motion.div
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: 'auto' }}
+                                    initial={{ opacity: 0, height: "250px" }}
+                                    animate={{ opacity: 1, height: '450px' }}
                                     exit={{ opacity: 0, height: 0 }}
                                     transition={{ duration: 0.5 }}
                                 >
@@ -83,17 +80,6 @@ const UserCard = ({ title, filter, setFilter, profile }) => {
                     </AnimatePresence>
                 </Grid>
             </CardContent>
-            <CardActions>
-                <Button
-                    fullWidth
-                    variant="contained"
-                    onClick={handleToggleExpand}
-                    endIcon={isExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-                    sx={{ backgroundColor: '#B573EE', color: 'white' }}
-                >
-                    {isExpanded ? 'Show Less' : 'Show More'}
-                </Button>
-            </CardActions>
         </Card>
     );
 };

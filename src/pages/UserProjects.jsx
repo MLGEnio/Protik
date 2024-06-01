@@ -41,6 +41,192 @@ const profiles = [
             },
         ],
     },
+    {
+        title: 'Software Engineer',
+        description: 'Hi, I’m Bright Dumadi...',
+        fullDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
+        image: '/path/to/image1.png',
+        skills: ['github', 'javascript', 'diamond'],
+        experience: [
+            {
+                title: 'Software Engineer',
+                icon: '/path/to/icon1.png',
+                location: 'San Jose, US',
+                duration: 'Dec 20 - Feb 21',
+            },
+            {
+                title: 'Software Engineer',
+                icon: '/path/to/icon2.png',
+                location: 'San Jose, US',
+                duration: 'Dec 20 - Feb 21',
+            },
+        ],
+        certificates: [
+            {
+                title: 'Certificate',
+                icon: '/path/to/cert1.png',
+            },
+            {
+                title: 'Certificate',
+                icon: '/path/to/cert2.png',
+            },
+        ],
+    },
+    {
+        title: 'Software Engineer',
+        description: 'Hi, I’m Bright Dumadi...',
+        fullDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
+        image: '/path/to/image1.png',
+        skills: ['github', 'javascript', 'diamond'],
+        experience: [
+            {
+                title: 'Software Engineer',
+                icon: '/path/to/icon1.png',
+                location: 'San Jose, US',
+                duration: 'Dec 20 - Feb 21',
+            },
+            {
+                title: 'Software Engineer',
+                icon: '/path/to/icon2.png',
+                location: 'San Jose, US',
+                duration: 'Dec 20 - Feb 21',
+            },
+        ],
+        certificates: [
+            {
+                title: 'Certificate',
+                icon: '/path/to/cert1.png',
+            },
+            {
+                title: 'Certificate',
+                icon: '/path/to/cert2.png',
+            },
+        ],
+    },
+    {
+        title: 'Software Engineer',
+        description: 'Hi, I’m Bright Dumadi...',
+        fullDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
+        image: '/path/to/image1.png',
+        skills: ['github', 'javascript', 'diamond'],
+        experience: [
+            {
+                title: 'Software Engineer',
+                icon: '/path/to/icon1.png',
+                location: 'San Jose, US',
+                duration: 'Dec 20 - Feb 21',
+            },
+            {
+                title: 'Software Engineer',
+                icon: '/path/to/icon2.png',
+                location: 'San Jose, US',
+                duration: 'Dec 20 - Feb 21',
+            },
+        ],
+        certificates: [
+            {
+                title: 'Certificate',
+                icon: '/path/to/cert1.png',
+            },
+            {
+                title: 'Certificate',
+                icon: '/path/to/cert2.png',
+            },
+        ],
+    },
+    {
+        title: 'Software Engineer',
+        description: 'Hi, I’m Bright Dumadi...',
+        fullDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
+        image: '/path/to/image1.png',
+        skills: ['github', 'javascript', 'diamond'],
+        experience: [
+            {
+                title: 'Software Engineer',
+                icon: '/path/to/icon1.png',
+                location: 'San Jose, US',
+                duration: 'Dec 20 - Feb 21',
+            },
+            {
+                title: 'Software Engineer',
+                icon: '/path/to/icon2.png',
+                location: 'San Jose, US',
+                duration: 'Dec 20 - Feb 21',
+            },
+        ],
+        certificates: [
+            {
+                title: 'Certificate',
+                icon: '/path/to/cert1.png',
+            },
+            {
+                title: 'Certificate',
+                icon: '/path/to/cert2.png',
+            },
+        ],
+    },
+    {
+        title: 'Software Engineer',
+        description: 'Hi, I’m Bright Dumadi...',
+        fullDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
+        image: '/path/to/image1.png',
+        skills: ['github', 'javascript', 'diamond'],
+        experience: [
+            {
+                title: 'Software Engineer',
+                icon: '/path/to/icon1.png',
+                location: 'San Jose, US',
+                duration: 'Dec 20 - Feb 21',
+            },
+            {
+                title: 'Software Engineer',
+                icon: '/path/to/icon2.png',
+                location: 'San Jose, US',
+                duration: 'Dec 20 - Feb 21',
+            },
+        ],
+        certificates: [
+            {
+                title: 'Certificate',
+                icon: '/path/to/cert1.png',
+            },
+            {
+                title: 'Certificate',
+                icon: '/path/to/cert2.png',
+            },
+        ],
+    },
+    {
+        title: 'Software Engineer',
+        description: 'Hi, I’m Bright Dumadi...',
+        fullDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
+        image: '/path/to/image1.png',
+        skills: ['github', 'javascript', 'diamond'],
+        experience: [
+            {
+                title: 'Software Engineer',
+                icon: '/path/to/icon1.png',
+                location: 'San Jose, US',
+                duration: 'Dec 20 - Feb 21',
+            },
+            {
+                title: 'Software Engineer',
+                icon: '/path/to/icon2.png',
+                location: 'San Jose, US',
+                duration: 'Dec 20 - Feb 21',
+            },
+        ],
+        certificates: [
+            {
+                title: 'Certificate',
+                icon: '/path/to/cert1.png',
+            },
+            {
+                title: 'Certificate',
+                icon: '/path/to/cert2.png',
+            },
+        ],
+    },
     // Add more profiles as needed
 ];
 const filterConfig = [
@@ -66,20 +252,21 @@ const ProfileSwiper = () => {
                 ))}
             </div>
             <Swiper
-                spaceBetween={30}
-                slidesPerView={3}
-                navigation
-                pagination={{clickable: true}}
+                spaceBetween={10}
+                slidesPerView={'auto'}
+                centeredSlides={false}
+                // navigation
+                // pagination={{ clickable: true }}
                 className="mySwiper"
             >
                 {profiles.map((profile, index) => (
-                    <SwiperSlide key={index}>
+                    <SwiperSlide key={index} style={{ width: 'auto' }}>
                         <UserCard
                             key={profile.title}
                             title={profile.title}
                             filter={filter}
                             setFilter={setFilter}
-                            profile={profiles[0]}
+                            profile={profile}
                         />
                     </SwiperSlide>
                 ))}

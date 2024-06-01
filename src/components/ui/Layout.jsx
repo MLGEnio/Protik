@@ -392,11 +392,8 @@ const Layout = ({ children }) => {
     const location = useLocation();
     const currentPath = location.pathname;
 
-//ktu duhet heq overflow hidden bsj se sna lejo me bo scroll posht neper faqet e tjera, se e ke bo layout , affekto cdo vend
     return (
         <div className="relative  w-full h-full overflow-auto">
-            {/*<div*/}
-            {/*    className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-1"/>*/}
 
             <div className="absolute inset-0 w-full h-full bg-[#02000F] p-16 pt-44 z-0">
                 {currentPath === "/" && <World data={sampleArcs} globeConfig={globeConfig}/>}

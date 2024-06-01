@@ -309,9 +309,7 @@ const ProjectComponent = () => {
       <div className="flex flex-col md:flex-row justify-between">
         <div className="md:w-2/3">
         <div className="rounded-lg overflow-hidden">
-        <Spline
-              scene="https://prod.spline.design/GklWSSgGgsjJ9Pqz/scene.splinecode"
-            />
+            <Spline scene="https://prod.spline.design/GklWSSgGgsjJ9Pqz/scene.splinecode" />
         </div>
           <div className="bg-gray-800 p-4 rounded-lg mb-4">
             <h2 className="text-xl font-semibold">{project.name}</h2>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useMemo, useRef } from "react";
 import TinderCard from "react-tinder-card";
 
 const projects = [
@@ -42,15 +42,42 @@ const projects = [
 ];
 
 const ExploreProjects = () => {
+	const [currentIndex, setCurrentIndex] = useState(projects.length - 1);
 	const [lastDirection, setLastDirection] = useState();
+	const currentIndexRef = useRef(currentIndex);
 
-	const swiped = (direction, nameToDelete) => {
-		console.log("removing: " + nameToDelete);
-		setLastDirection(direction);
+	const childRefs = useMemo(
+		() =>
+			Array(projects.length)
+				.fill(0)
+				.map(() => React.createRef()),
+		[],
+	);
+
+	const updateCurrentIndex = (val) => {
+		setCurrentIndex(val);
+		currentIndexRef.current = val;
 	};
 
-	const outOfFrame = (name) => {
-		console.log(name + " left the screen!");
+	const canSwipe = currentIndex >= 0;
+
+	const swiped = (direction, nameToDelete, index) => {
+		setLastDirection(direction);
+		updateCurrentIndex(index - 1);
+	};
+
+	const outOfFrame = (name, idx) => {
+		console.log(
+			`${name} (${idx}) left the screen!`,
+			currentIndexRef.current,
+		);
+		currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
+	};
+
+	const swipe = async (dir) => {
+		if (canSwipe && currentIndex < projects.length) {
+			await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
+		}
 	};
 
 	return (
@@ -58,10 +85,11 @@ const ExploreProjects = () => {
 			<div className='w-full max-w-2xl relative'>
 				{projects.map((project, index) => (
 					<TinderCard
+						ref={childRefs[index]}
 						className='swipe absolute w-full h-full'
 						key={index}
-						onSwipe={(dir) => swiped(dir, project.name)}
-						onCardLeftScreen={() => outOfFrame(project.name)}
+						onSwipe={(dir) => swiped(dir, project.name, index)}
+						onCardLeftScreen={() => outOfFrame(project.name, index)}
 						preventSwipe={["up", "down"]}
 					>
 						<div
@@ -85,6 +113,20 @@ const ExploreProjects = () => {
 						</div>
 					</TinderCard>
 				))}
+			</div>
+			<div className='flex space-x-4 mt-4 z-50'>
+				<button
+					className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+					onClick={() => swipe("left")}
+				>
+					Swipe left!
+				</button>
+				<button
+					className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
+					onClick={() => swipe("right")}
+				>
+					Swipe right!
+				</button>
 			</div>
 			{lastDirection ? (
 				<h2 className='mt-4 font-bold'>You swiped {lastDirection}</h2>

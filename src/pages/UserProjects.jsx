@@ -232,13 +232,14 @@ const profiles = [
     // Add more profiles as needed
 ];
 const filterConfig = [
+    { title: 'All'},
     { title: 'Liked'},
     { title: 'Not Liked'} ,
 ];
 
 
 const ProfileSwiper = () => {
-    const [filter, setFilter] = useState("Liked")
+    const [filter, setFilter] = useState("All")
     const [mainFilterText, setMainFilterText] = useState("Projects")
     const [mainFilter, setMainFilter] = useState([
         { title: 'Projects'},
@@ -302,7 +303,7 @@ const ProfileSwiper = () => {
                 {filterConfig.map((item) => (
                     <div key={item.title} className="relative flex flex-col items-center">
                         <button
-                            className={`bg-gray-800 mr-2 text-white py-1 px-4 rounded-full bg-opacity-50 hover:bg-gray-700 focus:text-[#B573EE] focus:bg-opacity-20 ${filter === item.title ? 'bg-gray-700' : ''}`}
+                            className={`bg-gray-800 mr-2  py-1 px-4 rounded-full bg-opacity-50 hover:bg-gray-700  ${filter === item.title ? ' text-[#B573EE] bg-opacity-20 ' : ' text-white'}`}
                             onClick={() => setFilter(item.title)}
                         >
                             {item.title}

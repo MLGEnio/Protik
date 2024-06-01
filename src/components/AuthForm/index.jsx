@@ -32,30 +32,6 @@ const AuthForm = () => {
 	return (
 		<div className='min-h-screen flex items-center justify-center bg-transparent text-white'>
 			<div className='w-full p-8 space-y-6'>
-				<div className='flex justify-center mb-6'>
-					<button
-						className={`px-4 py-2 rounded-l ${
-							isLogin ? "bg-purple-700" : "bg-gray-800"
-						}`}
-						onClick={() => {
-							setIsLogin(true);
-							setShowPreferences(false);
-						}}
-					>
-						Sign In
-					</button>
-					<button
-						className={`px-4 py-2 rounded-r ${
-							!isLogin ? "bg-purple-700" : "bg-gray-800"
-						}`}
-						onClick={() => {
-							setIsLogin(false);
-							setShowPreferences(false);
-						}}
-					>
-						Register
-					</button>
-				</div>
 				{!showPreferences ? (
 					<form
 						onSubmit={handleSubmit(onSubmit)}

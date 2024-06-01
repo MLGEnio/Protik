@@ -2,15 +2,14 @@
 import { useEffect, useRef, useState } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
 import ThreeGlobe from "three-globe";
-import { useThree, Canvas, extend } from "@react-three/fiber";
+import { Canvas, extend, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import countries from "../../data/global.json";
 
 extend({ ThreeGlobe });
 
 const RING_PROPAGATION_SPEED = 3;
-const aspect = window.innerWidth / window.innerHeight;
-console.log(window.innerWidth, "width")
+const initialAspect = window.innerWidth / window.innerHeight;
 const cameraZ = 300;
 
 let numbersOfRings = [0];
@@ -163,13 +162,23 @@ export function Globe({ globeConfig, data }) {
 }
 
 export function WebGLRendererConfig() {
-    const { gl, size } = useThree();
+    const { gl, size, camera } = useThree();
 
     useEffect(() => {
-        gl.setPixelRatio(window.devicePixelRatio);
-        gl.setSize(size.width, size.height);
-        gl.setClearColor(0xffaaff, 0);
-    }, [gl, size]);
+        const handleResize = () => {
+            gl.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            gl.setPixelRatio(window.devicePixelRatio);
+        };
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [gl, camera]);
 
     return null;
 }
@@ -178,8 +187,13 @@ export function World(props) {
     const { globeConfig } = props;
     const scene = new Scene();
     scene.fog = new Fog(0xffffff, 400, 2000);
+
+    const camera = new PerspectiveCamera(50, initialAspect, 180, 1800);
+    camera.position.set(100, -100, cameraZ);
+    camera.lookAt(new Vector3(0, -100, 0));
+
     return (
-        <Canvas scene={scene} camera={new PerspectiveCamera(50, aspect, 180, 1800)}>
+        <Canvas>
             <WebGLRendererConfig />
             <ambientLight color={globeConfig.ambientLight} intensity={0.6} />
             <directionalLight
@@ -207,7 +221,7 @@ export function World(props) {
                 maxPolarAngle={Math.PI - Math.PI / 3}
             />
         </Canvas>
-    )
+    );
 }
 
 export function hexToRgb(hex) {

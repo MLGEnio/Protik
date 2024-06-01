@@ -1,40 +1,42 @@
 import React, { useState, useMemo, useRef } from "react";
 import TinderCard from "react-tinder-card";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import CloseIcon from '@mui/icons-material/Close';
 
 const projects = [
 	{
 		name: "Knitted Coat",
-		photo: "/path/to/your/image.png", // replace with actual path
+		photo: "/placeholders/img1.png", // replace with actual path
 		details: "A beautifully knitted coat with vibrant colors.",
 		members: ["Alice", "Bob", "Charlie"],
 	},
 	{
 		name: "Another Project",
-		photo: "/path/to/another/image.png", // replace with actual path
+		photo: "/placeholders/img.png", // replace with actual path
 		details: "Details about another project.",
 		members: ["Dave", "Eve", "Frank"],
 	},
 	{
 		name: "Knitted Coat",
-		photo: "/path/to/your/image.png", // replace with actual path
+		photo: "/placeholders/img1.png", // replace with actual path
 		details: "A beautifully knitted coat with vibrant colors.",
 		members: ["Alice", "Bob", "Charlie"],
 	},
 	{
 		name: "Another Project",
-		photo: "/path/to/another/image.png", // replace with actual path
+		photo: "/placeholders/img.png", // replace with actual path
 		details: "Details about another project.",
 		members: ["Dave", "Eve", "Frank"],
 	},
 	{
 		name: "Knitted Coat",
-		photo: "/path/to/your/image.png", // replace with actual path
+		photo: "/placeholders/img1.png", // replace with actual path
 		details: "A beautifully knitted coat with vibrant colors.",
 		members: ["Alice", "Bob", "Charlie"],
 	},
 	{
 		name: "Another Project",
-		photo: "/path/to/another/image.png", // replace with actual path
+		photo: "/placeholders/img.png", // replace with actual path
 		details: "Details about another project.",
 		members: ["Dave", "Eve", "Frank"],
 	},
@@ -80,59 +82,61 @@ const ExploreProjects = () => {
 		}
 	};
 
+	const getCardStyle = (index) => {
+		if (index === 0) return {}
+		const variance = Math.random() < 0.5 ? -5 : 5; // Randomly choose -5 or 5 for variance
+		const rotate = Math.floor(Math.random() * 10) - 5; // Randomly rotate between -5 and 5 degrees
+		const translateX = Math.floor(Math.random() * 20) - 10; // Randomly translate between -10 and 10 pixels
+		return {
+			transform: `rotate(${rotate}deg) translateX(${translateX}px)`,
+		};
+	};
+
 	return (
-		<div className='min-h-screen bg-gray-900 text-white flex flex-col items-center p-4 overflow-hidden'>
+		<div className='min-h-screen text-white flex flex-col items-center p-4 overflow-hidden'>
 			<div className='w-full max-w-2xl relative'>
 				{projects.map((project, index) => (
 					<TinderCard
 						ref={childRefs[index]}
-						className='swipe absolute w-full h-full'
+						className='swipe absolute flex justify-center w-full h-full'
 						key={index}
 						onSwipe={(dir) => swiped(dir, project.name, index)}
 						onCardLeftScreen={() => outOfFrame(project.name, index)}
 						preventSwipe={["up", "down"]}
 					>
 						<div
-							style={{ backgroundImage: `url(${project.photo})` }}
-							className='bg-cover bg-center rounded-lg shadow-lg p-6 h-96 flex flex-col justify-end'
+							style={{
+								backgroundImage: `url(${project.photo})`,
+								...getCardStyle(index),
+								zIndex: projects.length - index,
+							}}
+							className='bg-cover bg-center rounded-lg shadow-lg p-6 h-[550px] w-[400px] flex flex-col justify-end'
 						>
-							<h3 className='text-2xl font-bold bg-black bg-opacity-50 px-2 py-1 rounded'>
+							<h3 className='text-2xl font-bold'>
 								{project.name}
 							</h3>
-							<p className='mt-2 text-gray-300 bg-black bg-opacity-50 px-2 py-1 rounded'>
-								{project.details}
-							</p>
-							<div className='mt-4 bg-black bg-opacity-50 px-2 py-1 rounded'>
-								<h3 className='font-semibold'>Members</h3>
-								<ul className='list-disc list-inside'>
-									{project.members.map((member, index) => (
-										<li key={index}>{member}</li>
-									))}
-								</ul>
-							</div>
+
 						</div>
 					</TinderCard>
 				))}
 			</div>
-			<div className='flex space-x-4 mt-4 z-50'>
+			<div className='flex space-x-10 relative top-[300px] mt-4 z-50'>
+
 				<button
-					className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+					className='p-2 rounded-full flex justify-center items-center'
+					style={{border: "2px solid red"}}
 					onClick={() => swipe("left")}
 				>
-					Swipe left!
+					<CloseIcon sx={{color: "red"}} fontSize="large"/>
 				</button>
 				<button
-					className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
+					className='p-2 rounded-full flex justify-center items-center'
+					style={{border: "2px solid green"}}
 					onClick={() => swipe("right")}
 				>
-					Swipe right!
+					<FavoriteIcon sx={{color: "green"}} fontSize="large"/>
 				</button>
 			</div>
-			{lastDirection ? (
-				<h2 className='mt-4 font-bold'>You swiped {lastDirection}</h2>
-			) : (
-				<h2 className='mt-4 font-bold' />
-			)}
 		</div>
 	);
 };

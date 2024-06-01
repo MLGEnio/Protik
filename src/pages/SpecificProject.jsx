@@ -20,9 +20,10 @@ const colors = [
 const profiles = [
     {
         title: 'Software Engineer',
-        description: 'Hi, I’m Bright Dumadi... Hi, I’m Bright Dumadi... Hi, I’m Bright Dumadi... Hi, I’m Bright Dumadi...',
+        description: 'Hi, I’m Bright Dumadi...',
         fullDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
         image: '/path/to/image1.png',
+        matchPercentage:10,
         skills: ['github', 'javascript', 'diamond'],
         experience: [
             {
@@ -54,6 +55,7 @@ const profiles = [
         description: 'Hi, I’m Bright Dumadi...',
         fullDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
         image: '/path/to/image1.png',
+        matchPercentage:75,
         skills: ['github', 'javascript', 'diamond'],
         experience: [
             {
@@ -85,6 +87,7 @@ const profiles = [
         description: 'Hi, I’m Bright Dumadi...',
         fullDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
         image: '/path/to/image1.png',
+        matchPercentage:75,
         skills: ['github', 'javascript', 'diamond'],
         experience: [
             {
@@ -116,6 +119,7 @@ const profiles = [
         description: 'Hi, I’m Bright Dumadi...',
         fullDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
         image: '/path/to/image1.png',
+        matchPercentage:75,
         skills: ['github', 'javascript', 'diamond'],
         experience: [
             {
@@ -147,6 +151,7 @@ const profiles = [
         description: 'Hi, I’m Bright Dumadi...',
         fullDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
         image: '/path/to/image1.png',
+        matchPercentage:75,
         skills: ['github', 'javascript', 'diamond'],
         experience: [
             {
@@ -178,6 +183,7 @@ const profiles = [
         description: 'Hi, I’m Bright Dumadi...',
         fullDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
         image: '/path/to/image1.png',
+        matchPercentage:20,
         skills: ['github', 'javascript', 'diamond'],
         experience: [
             {
@@ -209,6 +215,7 @@ const profiles = [
         description: 'Hi, I’m Bright Dumadi...',
         fullDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
         image: '/path/to/image1.png',
+        matchPercentage:75,
         skills: ['github', 'javascript', 'diamond'],
         experience: [
             {
@@ -408,6 +415,7 @@ const ProjectComponent = () => {
                 setFilter={setFilter}
                 profile={profile}
                 backgroundColor={colors[index % colors.length]}
+                isApplicant
               />
             </SwiperSlide>
           ))}

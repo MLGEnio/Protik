@@ -57,3 +57,12 @@ html, body, #root {
     text-overflow: ellipsis;
     max-height: 4.5em; /* Approximately 3 lines of text */
 }
+.globe-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+canvas {
+    display: block;
+}

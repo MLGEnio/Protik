@@ -2,7 +2,7 @@ import UserProfile from "../components/Profile/index";
 
 const Profile = () => {
 	return (
-		<div>
+		<div className="mb-10">
 			<UserProfile />
 		</div>
 	);

@@ -131,14 +131,10 @@ const cardConfig = [
 			{
 				title: "python",
 				subcategories: [
-					{ title: "pandas", subcategories: [] },
-					{ title: "numpy", subcategories: [] },
 				],
 			},
 			{ title: "r", subcategories: [] },
 			{ title: "julia", subcategories: [] },
-			{ title: "pandas", subcategories: [] },
-			{ title: "numpy", subcategories: [] },
 			{ title: "scikit-learn", subcategories: [] },
 			{ title: "tensorflow", subcategories: [] },
 			{ title: "keras", subcategories: [] },
@@ -254,7 +250,7 @@ const Preferences = ({selectedCards,setSelectedCards}) => {
 
 	return (
 		<div className='p-4 text-center text-lg'>
-			<div className='flex flex-wrap justify-center max-h-[600px] overflow-y-auto'>
+			<div className='flex flex-wrap justify-center max-h-[400px] overflow-y-auto'>
 				{generateCards(cardConfig)}
 			</div>
 		</div>

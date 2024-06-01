@@ -19,6 +19,8 @@
     "@react-three/drei": "^9.106.0",
     "@react-three/fiber": "^8.16.7",
     "@reduxjs/toolkit": "^2.2.5",
+    "@splinetool/react-spline": "^2.2.6",
+    "@splinetool/runtime": "^1.4.5",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.10",
     "react": "^18.2.0",

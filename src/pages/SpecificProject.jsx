@@ -16,16 +16,13 @@ const SpecificComponent = () => {
               <span className="text-xs bg-purple-700 py-1 px-2 rounded-full">
                 Ongoing
               </span>
-              <span className="ml-2 text-xs bg-purple-700 py-1 px-2 rounded-full">
-                500+ going
-              </span>
             </div>
             <div className="flex space-x-4 mt-4">
               <button className="bg-purple-600 py-2 px-4 rounded-lg">
-                Join Now
+                Edit
               </button>
-              <button className="bg-gray-700 py-2 px-4 rounded-lg">
-                View Event
+              <button className="bg-red-700 py-2 px-4 rounded-lg">
+                Terminate Project
               </button>
             </div>
           </div>
@@ -84,25 +81,6 @@ const SpecificComponent = () => {
               </span>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="mt-6 flex justify-between items-center">
-        <div className="flex space-x-4">
-          <div className="bg-gray-800 p-4 rounded-lg">
-            <h4 className="text-lg font-semibold">04</h4>
-            <p className="text-sm">Days</p>
-          </div>
-          <div className="bg-gray-800 p-4 rounded-lg">
-            <h4 className="text-lg font-semibold">12</h4>
-            <p className="text-sm">Hours</p>
-          </div>
-          <div className="bg-gray-800 p-4 rounded-lg">
-            <h4 className="text-lg font-semibold">32</h4>
-            <p className="text-sm">Minutes</p>
-          </div>
-        </div>
-        <div>
-          <button className="bg-purple-600 py-2 px-4 rounded-lg">Enter Room</button>
         </div>
       </div>
     </div>

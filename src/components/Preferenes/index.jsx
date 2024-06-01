@@ -247,7 +247,7 @@ const Preferences = () => {
 
     return (
         <div className="p-4 text-center text-lg">
-            <div className="flex flex-wrap justify-center">
+            <div className="flex flex-wrap justify-center max-h-[600px] overflow-y-auto">
                 {generateCards(cardConfig)}
             </div>
         </div>

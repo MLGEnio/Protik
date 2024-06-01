@@ -55,13 +55,14 @@ const ProfileSwiper = () => {
         <div className="py-12">
             <div className="flex mb-4">
                 {filterConfig.map((item) => (
-                    <UserCard
-                        key={item.title}
-                        title={item.title}
-                        filter={filter}
-                        setFilter={setFilter}
-                        profile={profiles[0]} // Use the appropriate profile
-                    />
+                    <div key={item.title} className="relative flex flex-col items-center">
+                        <button
+                            className={`bg-gray-800 mr-2 text-white py-1 px-4 rounded-full hover:bg-gray-700 focus:bg-[#B573EE] ${filter === item.title ? 'bg-gray-700' : ''}`}
+                            onClick={() => setFilter(item.title)}
+                        >
+                            {item.title}
+                        </button>
+                    </div>
                 ))}
             </div>
             <Swiper
@@ -73,18 +74,13 @@ const ProfileSwiper = () => {
             >
                 {profiles.map((profile, index) => (
                     <SwiperSlide key={index}>
-                        <div className="relative bg-gray-800 text-white rounded-lg overflow-hidden shadow-lg p-6">
-                            <img src={profile.image} alt={profile.title}
-                                 className="w-full h-48 object-cover rounded-full mx-auto"/>
-                            <h3 className="text-xl font-bold mt-4 text-center">{profile.title}</h3>
-                            <p className="text-gray-400 text-center mt-2">{profile.description}</p>
-                            <div className="flex justify-center mt-4 space-x-4">
-                                {profile.skills.map((skill, idx) => (
-                                    <span key={idx}
-                                          className="bg-gray-700 rounded-full px-3 py-1 text-sm">{skill}</span>
-                                ))}
-                            </div>
-                        </div>
+                        <UserCard
+                            key={profile.title}
+                            title={profile.title}
+                            filter={filter}
+                            setFilter={setFilter}
+                            profile={profiles[0]}
+                        />
                     </SwiperSlide>
                 ))}
             </Swiper>

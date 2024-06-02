@@ -2,6 +2,7 @@ import React from "react";
 import { World } from "./globe.jsx";
 import Footer from "./Shared/Footer.jsx";
 import { useLocation } from "react-router-dom";
+import Navbar from "./Shared/Navbar.jsx";
 
 const Layout = ({ children }) => {
 	const globeConfig = {
@@ -394,6 +395,7 @@ const Layout = ({ children }) => {
 
 	return (
 		<div className='relative  w-full h-full overflow-auto'>
+			{currentPath !== "/profile" && <Navbar />}
 			<div className='absolute inset-0 w-full h-full bg-[#02000F]  pb-20 pt-28 z-0'>
 				{/*{currentPath === "/" && (*/}
 					<World data={sampleArcs} globeConfig={globeConfig} />

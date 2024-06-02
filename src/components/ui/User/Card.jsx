@@ -10,7 +10,7 @@ const UserCard = ({ title, filter, setFilter, profile, backgroundColor, isApplic
 
     const handleToggleExpand = () => {
         setIsExpanded(!isExpanded);
-        setFilter(title);
+        // setFilter(title);
     };
 
     const getColor = (percentage) => {

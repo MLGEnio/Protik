@@ -22,7 +22,7 @@ const Footer = () => {
 			className='absolute bottom-0 w-full bg-cover py-6 bg-top z-50'
 			style={{ backgroundImage: `url(/footerShadow.png)` }}
 		>
-			<div className='container mx-auto flex justify-center realtive top-14 space-x-8 z-[1000] min-h-[100px]'>
+			<div className='container mx-auto flex flex-wrap justify-center realtive top-14 space-x-8 z-[1000] min-h-[100px]'>
 				{navConfig.map((item) => (
 					<div
 						key={item.title}

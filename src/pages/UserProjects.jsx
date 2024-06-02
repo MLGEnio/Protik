@@ -234,7 +234,7 @@ const profiles = [
 const filterConfig = [
     { title: 'All'},
     { title: 'Liked'},
-    { title: 'Not Liked'} ,
+    { title: 'Disliked'} ,
 ];
 
 
@@ -250,8 +250,8 @@ const ProfileSwiper = () => {
             setMainFilter([mainFilter[1], mainFilter[0]]);
             setMainFilterText(title)
         }
-
     };
+
     const projectsConfig = [
         {
             image: '/placeholders/img.png', // Update with the correct path

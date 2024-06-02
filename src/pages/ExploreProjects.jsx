@@ -8,40 +8,47 @@ import {MenuItem, TextField} from "@mui/material";
 const projects = [
 	{
 		name: "Knitted Coat",
-		photo: "/placeholders/img1.png", // replace with actual path
+		photo: "https://source.unsplash.com/random/600x800", // replace with actual path
 		details: "A beautifully knitted coat with vibrant colors.",
 		members: ["Alice", "Bob", "Charlie"],
 	},
 	{
 		name: "Another Project",
-		photo: "/placeholders/img.png", // replace with actual path
+		photo: "https://source.unsplash.com/random/600x801", // replace with actual path
 		details: "Details about another project.",
 		members: ["Dave", "Eve", "Frank"],
 	},
 	{
 		name: "Knitted Coat",
-		photo: "/placeholders/img1.png", // replace with actual path
+		photo: "https://source.unsplash.com/random/600x802", // replace with actual path
 		details: "A beautifully knitted coat with vibrant colors.",
 		members: ["Alice", "Bob", "Charlie"],
 	},
 	{
 		name: "Another Project",
-		photo: "/placeholders/img.png", // replace with actual path
+		photo: "https://source.unsplash.com/random/600x803", // replace with actual path
 		details: "Details about another project.",
 		members: ["Dave", "Eve", "Frank"],
 	},
 	{
 		name: "Knitted Coat",
-		photo: "/placeholders/img1.png", // replace with actual path
+		photo: "https://source.unsplash.com/random/600x804", // replace with actual path
 		details: "A beautifully knitted coat with vibrant colors.",
 		members: ["Alice", "Bob", "Charlie"],
 	},
 	{
 		name: "Another Project",
-		photo: "/placeholders/img.png", // replace with actual path
+		photo: "https://source.unsplash.com/random/600x805", // replace with actual path
 		details: "Details about another project.",
 		members: ["Dave", "Eve", "Frank"],
 	},
+	{
+		name: "Knitted Coat",
+		photo: "https://source.unsplash.com/random/600x806", // replace with actual path
+		details: "A beautifully knitted coat with vibrant colors.",
+		members: ["Alice", "Bob", "Charlie"],
+	},
+
 ];
 
 const ExploreProjects = () => {

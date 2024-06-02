@@ -51,6 +51,52 @@ const projects = [
 
 ];
 
+const people = [
+	{
+		name: "Knitted Coat",
+		photo: "https://source.unsplash.com/random/600x820", // replace with actual path
+		details: "A beautifully knitted coat with vibrant colors.",
+		members: ["Alice", "Bob", "Charlie"],
+	},
+	{
+		name: "Another Project",
+		photo: "https://source.unsplash.com/random/600x821", // replace with actual path
+		details: "Details about another project.",
+		members: ["Dave", "Eve", "Frank"],
+	},
+	{
+		name: "Knitted Coat",
+		photo: "https://source.unsplash.com/random/600x822", // replace with actual path
+		details: "A beautifully knitted coat with vibrant colors.",
+		members: ["Alice", "Bob", "Charlie"],
+	},
+	{
+		name: "Another Project",
+		photo: "https://source.unsplash.com/random/600x823", // replace with actual path
+		details: "Details about another project.",
+		members: ["Dave", "Eve", "Frank"],
+	},
+	{
+		name: "Knitted Coat",
+		photo: "https://source.unsplash.com/random/600x824", // replace with actual path
+		details: "A beautifully knitted coat with vibrant colors.",
+		members: ["Alice", "Bob", "Charlie"],
+	},
+	{
+		name: "Another Project",
+		photo: "https://source.unsplash.com/random/600x825", // replace with actual path
+		details: "Details about another project.",
+		members: ["Dave", "Eve", "Frank"],
+	},
+	{
+		name: "Knitted Coat",
+		photo: "https://source.unsplash.com/random/600x826", // replace with actual path
+		details: "A beautifully knitted coat with vibrant colors.",
+		members: ["Alice", "Bob", "Charlie"],
+	},
+
+];
+
 const ExploreProjects = () => {
 	const [currentIndex, setCurrentIndex] = useState(projects.length - 1);
 	const [lastDirection, setLastDirection] = useState();
@@ -142,7 +188,9 @@ const ExploreProjects = () => {
 			<div className='min-h-screen text-white flex flex-col items-center p-4 overflow-hidden'>
 
 				<div className='w-full max-w-full relative'>
-					{projects.map((project, index) => (
+
+					{mainFilterText === "People" ?
+						people.map((project, index) => (
 						<TinderCard
 							ref={childRefs[index]}
 							className='swipe absolute flex justify-center w-full h-full'
@@ -204,7 +252,72 @@ const ExploreProjects = () => {
 								)}
 							</div>
 						</TinderCard>
-					))}
+					))
+						:
+						projects.map((project, index) => (
+							<TinderCard
+								ref={childRefs[index]}
+								className='swipe absolute flex justify-center w-full h-full'
+								key={index}
+								onSwipe={(dir) => swiped(dir, project.name, index)}
+								onCardLeftScreen={() => outOfFrame(project.name, index)}
+								preventSwipe={["up", "down"]}
+							>
+								<div
+									onClick={() => {
+										if (expandedCardIndex) {
+											setExpandedCardIndex(null)
+										} else {
+											setExpandedCardIndex(index)
+										}
+									}}
+									style={{
+										backgroundImage: `url(${expandedCardIndex === index ? "" : project.photo})`,
+										backgroundColor: 'rgba(174,175,255,0.1)',
+										backdropFilter: 'blur(10px)',
+										...getCardStyle(index),
+										zIndex: projects.length - index,
+										transition: 'transform 0.5s ease, width 0.5s ease, height 0.5s ease',
+										width: expandedCardIndex === index ? '1000px' : '400px',
+										height: expandedCardIndex === index ? '550px' : '500px',
+									}}
+									className='rounded-lg bg-cover bg-center object-center fit-content shadow-lg p-6 flex flex-col justify-end'
+								>
+									{expandedCardIndex !== index && (
+										<h3 className='text-2xl font-bold bg-black bg-opacity-20 rounded'>
+											{project.name}
+										</h3>
+									)}
+									{expandedCardIndex === index ? (
+										<div className="grid grid-cols-2 h-full">
+											<div className="flex flex-col p-6">
+												<h3 className='text-2xl font-bold'>
+													{project.name}
+												</h3>
+												<p className='mt-2 text-gray-300'>
+													{project.details}
+												</p>
+												<div className='mt-4'>
+													<h3 className='font-semibold'>Members</h3>
+													<ul className='list-disc list-inside'>
+														{project.members.map((member, index) => (
+															<li key={index}>{member}</li>
+														))}
+													</ul>
+												</div>
+											</div>
+											<img src={project.photo} alt={project.name}
+												 className="h-full max-h-[550px] bg-cover bg-center object-center fit-content ml-2 rounded-lg"/>
+										</div>
+									) : (
+										<p className='mt-2 text-gray-300 bg-black bg-opacity-20 rounded'>
+											Click to see more...
+										</p>
+									)}
+								</div>
+							</TinderCard>
+						))
+					}
 				</div>
 				<div className='flex space-x-10 relative top-[300px] mt-4 z-50'>
 					<button

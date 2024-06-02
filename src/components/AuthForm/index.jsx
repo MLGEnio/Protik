@@ -17,6 +17,7 @@ const AuthForm = () => {
 	const onSubmit = (data) => {
 		if (isLogin) {
 			console.log("Login Data:", data);
+			nav("/explore-projects");
 			// API call for login can be added here
 		} else {
 			console.log("Signup Data:", data);

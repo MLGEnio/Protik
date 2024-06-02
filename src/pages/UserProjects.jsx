@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -11,7 +11,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Install Swiper modules
 SwiperCore.use([Navigation, Pagination]);
-const profiles = [
+
+const filterConfig = [
+    { title: 'All' },
+    { title: 'Liked' },
+    { title: 'Disliked' },
+];
+
+const initialProfiles = [
     {
         title: 'Software Engineer',
         description: 'Hi, I’m Bright Dumadi... Hi, I’m Bright Dumadi... Hi, I’m Bright Dumadi... Hi, I’m Bright Dumadi...',
@@ -231,63 +238,116 @@ const profiles = [
     },
     // Add more profiles as needed
 ];
-const filterConfig = [
-    { title: 'All'},
-    { title: 'Liked'},
-    { title: 'Disliked'} ,
+
+const initialProjects = [
+    {
+        id: 7,
+        image: 'https://source.unsplash.com/random/800x603',
+        title: 'Project 1',
+        date: 'Apr 5th, 2022',
+        tag: 'Mobile App'
+    },
+    {
+        id: 8,
+        image: 'https://source.unsplash.com/random/800x604',
+        title: 'Project 2',
+        date: 'May 21st, 2022',
+        tag: 'Backend Development'
+    }, {
+        id: 7,
+        image: 'https://source.unsplash.com/random/800x623',
+        title: 'Project 1',
+        date: 'Apr 5th, 2022',
+        tag: 'Mobile App'
+    },
+    {
+        id: 8,
+        image: 'https://source.unsplash.com/random/800x624',
+        title: 'Project 2',
+        date: 'May 21st, 2022',
+        tag: 'Backend Development'
+    }, {
+        id: 7,
+        image: 'https://source.unsplash.com/random/800x613',
+        title: 'Project 1',
+        date: 'Apr 5th, 2022',
+        tag: 'Mobile App'
+    },
+    {
+        id: 8,
+        image: 'https://source.unsplash.com/random/800x614',
+        title: 'Project 2',
+        date: 'May 21st, 2022',
+        tag: 'Backend Development'
+    }, {
+        id: 7,
+        image: 'https://source.unsplash.com/random/800x633',
+        title: 'Project 1',
+        date: 'Apr 5th, 2022',
+        tag: 'Mobile App'
+    },
+    {
+        id: 8,
+        image: 'https://source.unsplash.com/random/800x634',
+        title: 'Project 2',
+        date: 'May 21st, 2022',
+        tag: 'Backend Development'
+    }
 ];
 
-
 const ProfileSwiper = () => {
-    const [filter, setFilter] = useState("All")
-    const [mainFilterText, setMainFilterText] = useState("Projects")
+    const [profiles, setProfiles] = useState(initialProfiles);
+    const [projectsConfig, setProjectsConfig] = useState(initialProjects);
+    const [filter, setFilter] = useState("All");
+    const [mainFilterText, setMainFilterText] = useState("Projects");
     const [mainFilter, setMainFilter] = useState([
-        { title: 'Projects'},
-        { title: 'People'} ,
-    ])
+        { title: 'Projects' },
+        { title: 'People' },
+    ]);
+
     const handleSwap = (title) => {
-        if(title !== mainFilter[0].title){
+        if (title !== mainFilter[0].title) {
             setMainFilter([mainFilter[1], mainFilter[0]]);
-            setMainFilterText(title)
+            setMainFilterText(title);
         }
     };
 
-    const projectsConfig = [
-        {
-            image: '/placeholders/img.png', // Update with the correct path
-            title: 'X App',
-            date: 'Jan 7th, 2022',
-            tag: 'UX Design'
-        },
-        {
-            image: '/placeholders/img.png',
-            title: 'Y App',
-            date: 'Feb 14th, 2022',
-            tag: 'Web Development'
-        },
-        {
-            image: '/placeholders/img.png',
-            title: 'Z App',
-            date: 'Mar 10th, 2022',
-            tag: 'Graphic Design'
+    useEffect(() => {
+        let filteredProfiles = [];
+        let filteredProjects = [];
+
+        if (filter === "All") {
+            filteredProfiles = initialProfiles;
+            filteredProjects = initialProjects;
+        } else if (filter === "Liked") {
+            filteredProfiles = initialProfiles.slice(0, Math.ceil(initialProfiles.length / 2));
+            filteredProjects = initialProjects.slice(0, Math.ceil(initialProjects.length / 2));
+        } else if (filter === "Disliked") {
+            filteredProfiles = initialProfiles.slice(Math.ceil(initialProfiles.length / 2));
+            filteredProjects = initialProjects.slice(Math.ceil(initialProjects.length / 2));
         }
-        // Add more projects as needed
-    ];
+
+        setProfiles(filteredProfiles);
+        setProjectsConfig(filteredProjects);
+    }, [filter]);
+
     const colors = [
         'rgba(252, 191, 4, 0.3)',  // #FCBF04
         'rgba(161, 204, 158, 0.3)', // #A1CC9E
         'rgba(45, 189, 172, 0.3)',  // #2DBDAC
         'rgba(107, 186, 190, 0.3)', // #6BBABE
-        'rgba(4, 118, 132, 0.3)'    // #047684
-    ]; return (
+        'rgba(4, 118, 132, 0.3)',    // #047684
+    ];
+
+    return (
         <div className="py-12">
             <div className="flex items-end mb-4">
                 <AnimatePresence initial={false}>
                     {mainFilter.map((item, index) => (
                         <motion.h2
                             key={item.title}
-                            className={`relative flex flex-col items-center text-[#B573EE] cursor-pointer ${index ===0 ? "text-5xl mr-5" : "text-xl"}`}
-                            onClick={()=>handleSwap(item.title)}
+                            className={`relative flex flex-col items-center text-[#B573EE] cursor-pointer ${index === 0 ? "text-5xl mr-5" : "text-xl"}`}
+                            onClick={() => handleSwap(item.title)}
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 20 }}
@@ -303,7 +363,7 @@ const ProfileSwiper = () => {
                 {filterConfig.map((item) => (
                     <div key={item.title} className="relative flex flex-col items-center">
                         <button
-                            className={`bg-gray-800 mr-2  py-1 px-4 rounded-full bg-opacity-50 hover:bg-gray-700  ${filter === item.title ? ' text-[#B573EE] bg-opacity-20 ' : ' text-white'}`}
+                            className={`bg-gray-800 mr-2 py-1 px-4 rounded-full bg-opacity-50 hover:bg-gray-700 ${filter === item.title ? 'text-[#B573EE] bg-opacity-20' : 'text-white'}`}
                             onClick={() => setFilter(item.title)}
                         >
                             {item.title}
@@ -311,17 +371,16 @@ const ProfileSwiper = () => {
                     </div>
                 ))}
             </div>
+
             <Swiper
                 spaceBetween={10}
                 slidesPerView={'auto'}
                 centeredSlides={false}
-                // navigation
-                // pagination={{ clickable: true }}
                 className="mySwiper"
             >
                 {mainFilterText === "Projects" ?
                     projectsConfig.map((project, index) => (
-                        <SwiperSlide key={index} style={{width: 'auto'}}>
+                        <SwiperSlide key={index} style={{ width: 'auto' }}>
                             <ProjectCard
                                 key={index}
                                 image={project.image || sampleImage} // Provide a default image if none is specified
@@ -333,7 +392,7 @@ const ProfileSwiper = () => {
                     ))
                     :
                     profiles.map((profile, index) => (
-                        <SwiperSlide key={index} style={{width: 'auto'}}>
+                        <SwiperSlide key={index} style={{ width: 'auto' }}>
                             <UserCard
                                 key={profile.title}
                                 title={profile.title}

@@ -48,6 +48,48 @@ const projects = [
 		details: "A beautifully knitted coat with vibrant colors.",
 		members: ["Alice", "Bob", "Charlie"],
 	},
+	{
+		name: "Knitted Coat",
+		photo: "https://source.unsplash.com/random/600x810", // replace with actual path
+		details: "A beautifully knitted coat with vibrant colors.",
+		members: ["Alice", "Bob", "Charlie"],
+	},
+	{
+		name: "Another Project",
+		photo: "https://source.unsplash.com/random/600x811", // replace with actual path
+		details: "Details about another project.",
+		members: ["Dave", "Eve", "Frank"],
+	},
+	{
+		name: "Knitted Coat",
+		photo: "https://source.unsplash.com/random/600x812", // replace with actual path
+		details: "A beautifully knitted coat with vibrant colors.",
+		members: ["Alice", "Bob", "Charlie"],
+	},
+	{
+		name: "Another Project",
+		photo: "https://source.unsplash.com/random/600x813", // replace with actual path
+		details: "Details about another project.",
+		members: ["Dave", "Eve", "Frank"],
+	},
+	{
+		name: "Knitted Coat",
+		photo: "https://source.unsplash.com/random/600x814", // replace with actual path
+		details: "A beautifully knitted coat with vibrant colors.",
+		members: ["Alice", "Bob", "Charlie"],
+	},
+	{
+		name: "Another Project",
+		photo: "https://source.unsplash.com/random/600x815", // replace with actual path
+		details: "Details about another project.",
+		members: ["Dave", "Eve", "Frank"],
+	},
+	{
+		name: "Knitted Coat",
+		photo: "https://source.unsplash.com/random/600x816", // replace with actual path
+		details: "A beautifully knitted coat with vibrant colors.",
+		members: ["Alice", "Bob", "Charlie"],
+	},
 
 ];
 
@@ -91,6 +133,48 @@ const people = [
 	{
 		name: "Knitted Coat",
 		photo: "https://source.unsplash.com/random/600x826", // replace with actual path
+		details: "A beautifully knitted coat with vibrant colors.",
+		members: ["Alice", "Bob", "Charlie"],
+	},
+	{
+		name: "Knitted Coat",
+		photo: "https://source.unsplash.com/random/600x840", // replace with actual path
+		details: "A beautifully knitted coat with vibrant colors.",
+		members: ["Alice", "Bob", "Charlie"],
+	},
+	{
+		name: "Another Project",
+		photo: "https://source.unsplash.com/random/600x844", // replace with actual path
+		details: "Details about another project.",
+		members: ["Dave", "Eve", "Frank"],
+	},
+	{
+		name: "Knitted Coat",
+		photo: "https://source.unsplash.com/random/600x842", // replace with actual path
+		details: "A beautifully knitted coat with vibrant colors.",
+		members: ["Alice", "Bob", "Charlie"],
+	},
+	{
+		name: "Another Project",
+		photo: "https://source.unsplash.com/random/600x843", // replace with actual path
+		details: "Details about another project.",
+		members: ["Dave", "Eve", "Frank"],
+	},
+	{
+		name: "Knitted Coat",
+		photo: "https://source.unsplash.com/random/600x844", // replace with actual path
+		details: "A beautifully knitted coat with vibrant colors.",
+		members: ["Alice", "Bob", "Charlie"],
+	},
+	{
+		name: "Another Project",
+		photo: "https://source.unsplash.com/random/600x845", // replace with actual path
+		details: "Details about another project.",
+		members: ["Dave", "Eve", "Frank"],
+	},
+	{
+		name: "Knitted Coat",
+		photo: "https://source.unsplash.com/random/600x846", // replace with actual path
 		details: "A beautifully knitted coat with vibrant colors.",
 		members: ["Alice", "Bob", "Charlie"],
 	},
@@ -220,7 +304,7 @@ const ExploreProjects = () => {
 								className='rounded-lg bg-cover bg-center object-center fit-content shadow-lg p-6 flex flex-col justify-end'
 							>
 								{expandedCardIndex !== index && (
-									<h3 className='text-2xl font-bold bg-black bg-opacity-20 rounded'>
+									<h3 className='text-2xl font-bold rounded'>
 										{project.name}
 									</h3>
 								)}
@@ -246,7 +330,7 @@ const ExploreProjects = () => {
 											 className="h-full max-h-[550px] bg-cover bg-center object-center fit-content ml-2 rounded-lg"/>
 									</div>
 								) : (
-									<p className='mt-2 text-gray-300 bg-black bg-opacity-20 rounded'>
+									<p className='mt-2 text-gray-300 rounded'>
 										Click to see more...
 									</p>
 								)}
@@ -284,7 +368,7 @@ const ExploreProjects = () => {
 									className='rounded-lg bg-cover bg-center object-center fit-content shadow-lg p-6 flex flex-col justify-end'
 								>
 									{expandedCardIndex !== index && (
-										<h3 className='text-2xl font-bold bg-black bg-opacity-20 rounded'>
+										<h3 className='text-2xl font-bold rounded'>
 											{project.name}
 										</h3>
 									)}
@@ -310,7 +394,7 @@ const ExploreProjects = () => {
 												 className="h-full max-h-[550px] bg-cover bg-center object-center fit-content ml-2 rounded-lg"/>
 										</div>
 									) : (
-										<p className='mt-2 text-gray-300 bg-black bg-opacity-20 rounded'>
+										<p className='mt-2 text-gray-300 rounded'>
 											Click to see more...
 										</p>
 									)}

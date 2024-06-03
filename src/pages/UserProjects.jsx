@@ -8,6 +8,7 @@ import SwiperCore from 'swiper';
 import UserCard from "../components/ui/User/Card.jsx";
 import ProjectCard from "../components/ui/Project/Card.jsx";
 import { motion, AnimatePresence } from 'framer-motion';
+import {useNavigate} from "react-router-dom";
 
 // Install Swiper modules
 SwiperCore.use([Navigation, Pagination]);
@@ -304,6 +305,7 @@ const ProfileSwiper = () => {
         { title: 'Projects' },
         { title: 'People' },
     ]);
+    const navigate = useNavigate();
 
     const handleSwap = (title) => {
         if (title !== mainFilter[0].title) {
@@ -311,7 +313,9 @@ const ProfileSwiper = () => {
             setMainFilterText(title);
         }
     };
-
+    const handleCardClick = (id) => {
+        navigate(`/project/${id}`);
+    };
     useEffect(() => {
         let filteredProfiles = [];
         let filteredProjects = [];
@@ -380,14 +384,16 @@ const ProfileSwiper = () => {
             >
                 {mainFilterText === "Projects" ?
                     projectsConfig.map((project, index) => (
-                        <SwiperSlide key={index} style={{ width: 'auto' }}>
-                            <ProjectCard
-                                key={index}
-                                image={project.image || sampleImage} // Provide a default image if none is specified
-                                title={project.title}
-                                date={project.date}
-                                tag={project.tag}
-                            />
+                        <SwiperSlide key={index} style={{ width: 'auto' }} >
+                            <div onClick={() => handleCardClick(project.id)}>
+                                <ProjectCard
+                                    key={index}
+                                    image={project.image || sampleImage} // Provide a default image if none is specified
+                                    title={project.title}
+                                    date={project.date}
+                                    tag={project.tag}
+                                />
+                            </div>
                         </SwiperSlide>
                     ))
                     :
